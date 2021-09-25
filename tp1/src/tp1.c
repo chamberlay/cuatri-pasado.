@@ -13,7 +13,7 @@
 
 int main(void) {
 	setbuf(stdout, NULL);
-//hacer doxygen
+
 	int opcion;
 	float primerNumero = 0;
 	float segundoNumero = 0;
