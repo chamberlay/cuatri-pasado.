@@ -9,12 +9,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "Funciones.h"
+#include "operacionesMatematicas.h"
 
 int main(void) {
 	setbuf(stdout, NULL);
-
+//hacer doxygen
 	int opcion;
-
 	float primerNumero = 0;
 	float segundoNumero = 0;
 
@@ -38,7 +38,7 @@ int main(void) {
 
 		eleccion(opcion, primerNumero, segundoNumero);
 
-	}while(opcion != 4);
+	}while(opcion != 5);
 
 
 	return EXIT_SUCCESS;

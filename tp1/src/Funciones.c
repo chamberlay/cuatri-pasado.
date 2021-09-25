@@ -4,15 +4,9 @@
  *  Created on: 11 sep. 2021
  *      Author: chamb
  */
+#include "operacionesMatematicas.h"
 #include "Funciones.h"
 
-/**
- * @fn void mostrarCalculos(float, float)
- * @brief muestra todos los calculos realizados
- *
- * @param primerNumero es el valor de A
- * @param segundoNumero es el valor de B
- */
 void mostrarCalculos(float primerNumero, float segundoNumero)
 {
 	printf("El primer número es: %.2f\n", primerNumero);
@@ -40,13 +34,13 @@ void mostrarCalculos(float primerNumero, float segundoNumero)
 	}
 	else
 	{
-		if(factorizar(primerNumero) == 0)
+		if(factorizarA(primerNumero) == 0)
 		{
 			printf("\nNo se pudo calcular el factorial, intente con un número mas pequeño.\n");
 		}
 		else
 		{
-			printf("\nEl factorial de %d es: %d\n", (int)primerNumero, factorizar((int)primerNumero));
+			printf("\nEl factorial de %d es: %d\n", (int)primerNumero, factorizarA((int)primerNumero));
 		}
 	}
 
@@ -56,34 +50,36 @@ void mostrarCalculos(float primerNumero, float segundoNumero)
 	}
 	else
 	{
-		if(factorizar(segundoNumero) == 0)
+		if(factorizarB(segundoNumero) == 0)
 		{
 			printf("\nNo se pudo calcular el factorial, intente con un número mas pequeño.\n");
 		}
 		else
 		{
-			printf("\nEl factorial de %d es: %d\n", (int)segundoNumero, factorizar((int)segundoNumero));
+			printf("\nEl factorial de %d es: %d\n", (int)segundoNumero, factorizarB((int)segundoNumero));
 		}
 	}
 }
 
-/**
- * @fn void eleccion(int, float, float)
- * @brief permite que sea ejecutado el codigo que corresponde, segun la opcion que se ingreso.
- *
- * @param opcion es la opcion que se ingreso en el menu.
- * @param primerNumero es el valor de A
- * @param segundoNumero es el valor de B
- */
 void eleccion(int opcion, float primerNumero, float segundoNumero)
 {
 	switch(opcion)
 	{
 	case 3:
-		mostrarCalculos(primerNumero, segundoNumero);
+		sumar(primerNumero, segundoNumero);
+		restar(primerNumero, segundoNumero);
+		multiplicar(primerNumero, segundoNumero);
+		dividir(primerNumero, segundoNumero);
+		factorizarA(primerNumero);
+		factorizarB(segundoNumero);
+		printf("Se hicieron los calculos.\n");
 	break;
 
 	case 4:
+		mostrarCalculos(primerNumero, segundoNumero);
+	break;
+
+	case 5:
 		printf("Hasta luego!!!!\n");
 	break;
 
@@ -92,13 +88,6 @@ void eleccion(int opcion, float primerNumero, float segundoNumero)
 	}
 }
 
-
-/**
- * @fn int menu(void)
- * @brief muestra el menu con las diferentes ocpiones a elegir.
- *
- * @return devuelve la opcion que se ingreso.
- */
 int menu(void)
 
 {
@@ -107,28 +96,22 @@ int menu(void)
 	printf("############BIENVENIDO############\n");
 	printf("1). Ingresar el primer número. \n");
 	printf("2). Ingresar el segundo número. \n");
-	printf("3). Mostrar los resultados. \n");
-	printf("4). Salir. \n");
+	printf("3). Hacer los calculos. \n");
+	printf("4). Mostrar los resultados. \n");
+	printf("5). Salir. \n");
 	printf("########################################\n");
 	fflush(stdin);
 	printf("Ingrese una opción: ");
 	fflush(stdin);
 	scanf("%d", &opcion);
 
-	if(isalpha(opcion) != 0 || opcion < 1 || opcion > 4)
+	if(isalpha(opcion) != 0 || opcion < 1 || opcion > 5)
 	{
 		printf("\nError. Ingrese una opción valida.\n");
 	}
 
 	return opcion;
 }
-
-/**
- * @fn float ingresarNumero(void)
- * @brief solicita un numero al cliente para luego hacer los calculos.
- *
- * @return devuelve el numero que se ingreso.
- */
 float ingresarNumero(void)
 {
 	float numero;
@@ -138,101 +121,4 @@ float ingresarNumero(void)
 	scanf("%f", &numero);
 
 	return numero;
-}
-
-/**
- * @fn float sumar(float, float)
- * @brief suma los dos numeros ingresados.
- *
- * @param primerNumero es el valor de A.
- * @param segundoNumero es el valor de B.
- * @return devuelve el resultado de la suma.
- */
-float sumar(float primerNumero, float segundoNumero)
-{
-	float suma;
-
-	suma = primerNumero + segundoNumero;
-
-	return suma;
-}
-
-/**
- * @fn float restar(float, float)
- * @brief resta los numeros ingresados.
- *
- * @param primerNumero es el valor de A.
- * @param segundoNumero es el valor de B.
- * @return devuelve el resultado de la resta.
- */
-float restar(float primerNumero, float segundoNumero)
-{
-	float resta;
-
-	resta = primerNumero - segundoNumero;
-
-	return resta;
-}
-
-/**
- * @fn float dividir(float, float)
- * @brief divide los numeros ingresados.
- *
- * @param primerNumero es el valor de A.
- * @param segundoNumero es el valor de B.
- * @return devuelve el resultado de la division.
- */
-float dividir(float primerNumero, float segundoNumero)
-{
-	float division;
-
-	division = primerNumero / segundoNumero;
-
-	return division;
-}
-
-/**
- * @fn float multiplicar(float, float)
- * @brief multiplica los numeros ingresados.
- *
- * @param primerNumero es el valor de A.
- * @param segundoNumero es el valor de B.
- * @return devuelve el resultado de la multiplicacion.
- */
-float multiplicar(float primerNumero, float segundoNumero)
-{
-	float multiplicacion;
-
-	multiplicacion = primerNumero * segundoNumero;
-
-	return multiplicacion;
-}
-
-/**
- * @fn int factorizar(float)
- * @brief factoriza el numero que se le envie.
- *
- * @param numero es el valor de A o B, segun lo que se envie.
- * @return devuelve el factorial del numero ingresado.
- */
-int factorizar(float numero)
-{
-	numero = (int)numero;
-
-	int factorial = 1;
-
-	if(numero < 10)
-	{
-		if(numero != 0 && numero != 1)
-		{
-			factorial = numero * factorizar(numero-1);
-		}
-	}else
-	{
-		factorial = 0;
-	}
-
-
-
-	return factorial;
 }
