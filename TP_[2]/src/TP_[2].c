@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : TP_2.c
+ Name        : TP_[2].c
  Author      : Vega chamberlay (D)
  Description :
  ============================================================================
@@ -50,15 +50,56 @@ int main(void) {
 			break;
 
 			case 2:
+				if(cantidadProductos > 0)
+				{
+					printf("Hay empleados cargados.\n");
+				}
+				else
+				{
+					printf("No hay empleados cargados.\n");
+				}
 			break;
 
 			case 3:
+				if(cantidadProductos > 0)
+				{
+					printf("Hay empleados cargados.\n");
+				}
+				else
+				{
+					printf("No hay empleados cargados.\n");
+				}
 			break;
 
 			case 4:
 				if(cantidadProductos > 0)
 				{
-					Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);
+					pedirEntero(&opcion, "-------------------------------------\n"
+										"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n"
+										"2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\n"
+										"--------------------------------------\n"
+										"Ingrese una opcion: \n",
+										"-------------------------------------\n"
+										"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n"
+										"2. Total de los salarios, promedio de los salarios y cuántos empleados superan el salario promedio.\n"
+										"--------------------------------------\n"
+										"Error, ingrese una opcion valida: \n", 1, 5);
+
+					/*switch(opcion)
+					{
+						case 1:
+							Employee_sortEmployees(arrayEmpleados, TAM_EMPLOYES);
+						break;
+
+						case 2:
+							printf("El total de los salarios es: %.2f\n"
+									"El promedio de los salarios es de: %.2f\n"
+									"La cantidad de empleados que superan el salario promedio es de: %d\n",
+									Employee_calcularTotalSalarios(arrayEmpleados, TAM_EMPLOYES),
+									Employee_calcularPromedioSalario(arrayEmpleados, TAM_EMPLOYES),
+									Employee_calcularEmpleadosConMayorSueldo(arrayEmpleados, TAM_EMPLOYES)
+									);
+					}*/
 				}
 				else
 				{
@@ -76,7 +117,6 @@ int main(void) {
 	{
 		Employee_cargarEmpleados(arrayEmpleados, TAM_EMPLOYES);
 	}
-
 	Employee_sortEmployees(arrayEmpleados,TAM_EMPLOYES);
 	Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);*/
 

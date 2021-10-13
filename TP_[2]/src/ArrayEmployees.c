@@ -95,6 +95,7 @@ void Employee_sortEmployees(sEmployee arrayEmpleados[], int tam)
 {
 	Employee_ordenarPorSector(arrayEmpleados, TAM_EMPLOYES);
 	Employee_ordenarPorApellido(arrayEmpleados, TAM_EMPLOYES);
+	Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);
 }
 
 float Employee_calcularTotalSalarios(sEmployee arrayEmpleados[], int tam)
@@ -104,9 +105,9 @@ float Employee_calcularTotalSalarios(sEmployee arrayEmpleados[], int tam)
 
 	for(i=0; i<tam; i++)
 	{
-		printf("\n entro ");
+		//printf("\n entro ");
 		totalSalarios += arrayEmpleados[i].salary;
-		printf("%.2f", totalSalarios);
+		//printf("%.2f", totalSalarios);
 	}
 
 	return totalSalarios;
@@ -183,5 +184,4 @@ void Employee_ordenarPorApellido(sEmployee arrayEmpleados[], int tam)
 			}
 			nuevoLimite--;
 		}while(flagSwap);
-
 }
