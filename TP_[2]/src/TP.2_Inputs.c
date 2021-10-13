@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sEmpleados_funciones.h"
 #include "tp.2_Inputs.h"
+#include "ArrayEmployees.h"
 
 void pedirString(char* cadena, char* mensaje, char* mensajeError, int max)
 {
@@ -74,5 +74,3 @@ float pedirFloat(float* flotante, char* mensaje, char* mensajeError, float min, 
 
 	return retorno;
 }
-
-

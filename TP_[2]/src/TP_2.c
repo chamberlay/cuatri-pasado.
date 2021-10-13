@@ -9,16 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sEmpleados_funciones.h"
+#include "ArrayEmployees.h"
 #include "tp.2_Inputs.h"
 
 int main(void) {
 	setbuf(stdout, NULL);
 
-	sEmpleados arrayEmpleados[TAM_EMPLOYES];
+	sEmployee arrayEmpleados[TAM_EMPLOYES];
 	int opcion;
+	int cantidadProductos = 0;
 
-	empleados_inicializar_Array(arrayEmpleados, TAM_EMPLOYES);
+	Employee_inicializar_Array(arrayEmpleados, TAM_EMPLOYES);
 
 	do
 	{
@@ -42,7 +43,10 @@ int main(void) {
 		switch(opcion)
 		{
 			case 1:
-				empleados_cargarEmpleados(arrayEmpleados, TAM_EMPLOYES);
+				if(Employee_addEmployees(arrayEmpleados, TAM_EMPLOYES) == 0)
+				{
+					cantidadProductos ++;
+				}
 			break;
 
 			case 2:
@@ -52,7 +56,14 @@ int main(void) {
 			break;
 
 			case 4:
-				empleados_mostrarEmpleados(arrayEmpleados, TAM_EMPLOYES);
+				if(cantidadProductos > 0)
+				{
+					Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);
+				}
+				else
+				{
+					printf("No hay empleados cargados.\n");
+				}
 			break;
 
 			case 5:
@@ -60,6 +71,15 @@ int main(void) {
 			break;
 		}
 	}while(opcion != 5);
+
+	/*for(int i=0; i<TAM_EMPLOYES; i++)
+	{
+		Employee_cargarEmpleados(arrayEmpleados, TAM_EMPLOYES);
+	}
+
+	Employee_sortEmployees(arrayEmpleados,TAM_EMPLOYES);
+	Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);*/
+
 
 	return EXIT_SUCCESS;
 }
