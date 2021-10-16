@@ -5,7 +5,7 @@
 #include <string.h>
 
 //cantidad de empleados
-#define TAM_EMPLOYES 3
+#define TAM_EMPLOYES 1000
 
 //name y lastName
 #define TAM_NAMES 51
