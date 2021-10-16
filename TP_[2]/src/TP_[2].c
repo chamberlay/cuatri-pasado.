@@ -11,6 +11,7 @@
 #include <string.h>
 #include "ArrayEmployees.h"
 #include "tp.2_Inputs.h"
+#include "verificaciones.h"
 
 int main(void) {
 	setbuf(stdout, NULL);
@@ -33,7 +34,7 @@ int main(void) {
 							"Ingrese una opcion: \n",
 							"-------------------------------------\n"
 							"1. ALTA\n"
-							"2. MODIFICA\n"
+							"2. MODIFICAR\n"
 							"3. BAJA\n"
 							"4. INFORMAR\n"
 							"5. SALIR\n"
@@ -52,7 +53,8 @@ int main(void) {
 			case 2:
 				if(cantidadProductos > 0)
 				{
-					printf("Hay empleados cargados.\n");
+					Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);
+					Employee_modificarEmpleados(arrayEmpleados, TAM_EMPLOYES);
 				}
 				else
 				{
@@ -63,7 +65,12 @@ int main(void) {
 			case 3:
 				if(cantidadProductos > 0)
 				{
-					printf("Hay empleados cargados.\n");
+					Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);
+
+					if(Employee_removeEmployees(arrayEmpleados, TAM_EMPLOYES) == 0)
+					{
+						cantidadProductos --;
+					}
 				}
 				else
 				{
@@ -76,16 +83,18 @@ int main(void) {
 				{
 					pedirEntero(&opcion, "-------------------------------------\n"
 										"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n"
-										"2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\n"
+										"2. Total de los salarios, promedio de los salarios y cuántos empleados superan el salario promedio.\n"
+										"3. Atras\n"
 										"--------------------------------------\n"
 										"Ingrese una opcion: \n",
 										"-------------------------------------\n"
 										"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n"
 										"2. Total de los salarios, promedio de los salarios y cuántos empleados superan el salario promedio.\n"
+										"3. Atras\n"
 										"--------------------------------------\n"
-										"Error, ingrese una opcion valida: \n", 1, 5);
+										"Error, ingrese una opcion valida: \n", 1, 3);
 
-					/*switch(opcion)
+					switch(opcion)
 					{
 						case 1:
 							Employee_sortEmployees(arrayEmpleados, TAM_EMPLOYES);
@@ -99,7 +108,11 @@ int main(void) {
 									Employee_calcularPromedioSalario(arrayEmpleados, TAM_EMPLOYES),
 									Employee_calcularEmpleadosConMayorSueldo(arrayEmpleados, TAM_EMPLOYES)
 									);
-					}*/
+						break;
+
+						case 3:
+						break;
+					}
 				}
 				else
 				{
@@ -112,14 +125,6 @@ int main(void) {
 			break;
 		}
 	}while(opcion != 5);
-
-	/*for(int i=0; i<TAM_EMPLOYES; i++)
-	{
-		Employee_cargarEmpleados(arrayEmpleados, TAM_EMPLOYES);
-	}
-	Employee_sortEmployees(arrayEmpleados,TAM_EMPLOYES);
-	Employee_printEmployees(arrayEmpleados, TAM_EMPLOYES);*/
-
 
 	return EXIT_SUCCESS;
 }

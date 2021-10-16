@@ -3,6 +3,7 @@
 #include <string.h>
 #include "tp.2_Inputs.h"
 #include "ArrayEmployees.h"
+#include "verificaciones.h"
 
 void pedirString(char* cadena, char* mensaje, char* mensajeError, int max)
 {
@@ -70,6 +71,21 @@ float pedirFloat(float* flotante, char* mensaje, char* mensajeError, float min, 
 
 		*flotante = numeroIngresado;
 		retorno = 0;
+	}
+
+	return retorno;
+}
+
+int pedirCaracter(char* caracter, char* mensaje)
+{
+	int retorno = -1;
+
+	if(caracter != NULL && mensaje != NULL)
+	{
+			printf("%s", mensaje);
+			fflush(stdin);
+			*caracter = getchar();
+			retorno = 0;
 	}
 
 	return retorno;
